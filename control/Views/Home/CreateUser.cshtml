@@ -1,0 +1,77 @@
+﻿@model control.Models.Users
+
+
+ <title>Добавить пользователя</title>
+
+ <body>
+     <form method="post" action="">
+         <table>
+             <tr>
+                 <td><p>Введите имя:</p></td>
+                 <td><input type="text" name="FirstName" /></td>
+             </tr>
+             <tr>
+                 <td><p>Введите фамилию:</p></td>
+                 <td><input type="text" name="LastName" /></td>
+             </tr>
+             <tr>
+                 <td><p>Выберите класс:</p></td>
+                 <td>
+                     <select name="ClassNum">
+                         @foreach (var item in ViewBag.Classes)
+                         {
+                             <option>@item</option>
+
+
+                         }
+
+                     </select>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <input type="submit" value="Отправить" />
+                 </td>
+                 <td></td>
+             </tr>
+         </table>
+     </form>
+
+     <div>
+         @Html.ActionLink("На главную", "Index")
+     </div>
+     <table class="table">
+         <tr>
+             <th>
+                 Имя
+             </th>
+             <th>
+                 Фамилия
+             </th>
+             <th>
+                 Класс
+             </th>
+             <th></th>
+         </tr>
+
+         @foreach (var item in ViewBag.Students)
+         {
+             <tr>
+                 <td>
+                     @item.FirstName
+                 </td>
+                 <td>
+                     @item.LastName
+                 </td>
+                 <td>
+                     @item.ClassNum
+                 </td>
+                 <td>
+                     @Html.ActionLink("Delete", "DeleteUser", new { id = item.UsersId })
+                 </td>
+             </tr>
+         }
+
+     </table>
+ </body>
+

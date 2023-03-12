@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "RateStud";
+}
+
+<h1>Рейтинг</h1>
+<p>Рейтинг формируется из полученных оценок следующим образом:</p>
+<p>За каждую 5ку ученик получает 3 очка рейтинга, за 4ку - 2 очка, за 3ку - 1 очко, а за 2ку теряет 2 очка.</p>
+<p>Если у учеников одинаковое количество очков рейтинга, они сортируются по среднему баллу.</p>
+
+<h2>Best</h2>
+<table class="table">
+    <tr>
+        <th>№</th>
+        <th>Ученик</th>
+        <th>Рейтинг</th>
+        <th>Средний балл</th>
+        <th>Количество оценок</th>
+    </tr>
+    @{
+        int i = 1;
+
+    }
+    @foreach (control.Models.StudentRate stud in ViewBag.Best)
+    {
+        <tr>
+            <td>@i</td>
+            <td>@stud.Stud</td>
+            <td>@stud.Rate</td>
+            <td>@stud.MiddleMark</td>
+            <td>@stud.MarksCount</td>
+        </tr>
+        i++;
+    }
+</table>
+<h2>Worst</h2>
+<table class="table">
+    <tr>
+        <th>№</th>
+        <th>Ученик</th>
+        <th>Рейтинг</th>
+        <th>Средний балл</th>
+        <th>Количество оценок</th>
+    </tr>
+    @{
+        int n = 1;
+
+    }
+    @foreach (control.Models.StudentRate stud in ViewBag.Worst)
+    {
+        <tr>
+            <td>@n</td>
+            <td>@stud.Stud</td>
+            <td>@stud.Rate</td>
+            <td>@stud.MiddleMark</td>
+            <td>@stud.MarksCount</td>
+        </tr>
+        n++;
+    }
+</table>
+

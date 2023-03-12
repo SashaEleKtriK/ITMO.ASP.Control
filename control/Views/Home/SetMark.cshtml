@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "SetMark";
+}
+
+<h2>SetMark</h2>
+@using (Html.BeginForm("SetMark", "Home", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                Ученик
+            </td>
+            <td>
+                <select name="Student">
+                    @foreach (var s in ViewBag.stud)
+                    {
+
+                        control.Models.Users stud = new control.Models.Users();
+                        stud = s;
+
+                        <option>
+                            @stud.LastName @stud.FirstName
+                        </option>
+                    }
+
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Оценка
+            </td>
+            <td>
+                <select name="Mark">
+                    <option>N</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Предмет
+            </td>
+            <td>
+                <select name="lesson">
+                    <option>@ViewBag.lesson</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Id класса</td>
+            <td>
+                <select name="chosenClass">
+                    <option>@ViewBag.chosenClass.ClassLogId</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Отправить" />
+            </td>
+        </tr>
+    </table>
+
+}
+
+
+<table class="table">
+    <tr>
+        <th>@ViewBag.chosenClass.Name</th>
+        <th>@ViewBag.lesson</th>
+    </tr>
+    <tr>
+        <th>
+            Фамилия
+        </th>
+        <th>
+            @DateTime.Now.ToShortDateString()
+        </th>
+
+
+    </tr>
+
+    @foreach (var s in ViewBag.stud)
+    {
+
+        control.Models.Users stud = new control.Models.Users();
+        stud = s;
+        <tr>
+            <td>
+                @stud.LastName @stud.FirstName
+            </td>
+            <td>
+
+                <ul class="marks">
+                    @foreach (var mark in ViewBag.marks)
+
+                    {
+
+
+                        if (mark.Student == @stud.LastName + " " + @stud.FirstName)
+                        {
+
+
+                            <li>@mark.Mark @Html.ActionLink("×", "DeleteMark", new { id = mark.MarksId })</li>
+
+
+                        }
+
+
+
+
+
+                    }
+
+                </ul>
+
+
+            </td>
+        </tr>
+    }
+
+    <tr>
+        <td>
+        </td>
+    </tr>
+</table>
+
+
+

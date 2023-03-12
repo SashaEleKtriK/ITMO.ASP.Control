@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "CreateLesson";
+}
+
+
+<body>
+    <form method="post" action="">
+        <table>
+            <tr>
+                <td><p>Введите название предмета:</p></td>
+                <td><input type="text" name="LessonName" /></td>
+            </tr>
+            <tr>
+                <td><p>Преподаватель:</p></td>
+                <td><input type="text" name="Teacher" /></td>
+            </tr>
+            <tr>
+            <tr>
+                <td><p>Кабинет:</p></td>
+                <td><input type="number" name="LessonRoom" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Отправить" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+
+    <div>
+        @Html.ActionLink("На главную", "Index")
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                Предмет
+            </th>
+            <th>
+                Преподаватель
+            </th>
+            <th>
+                Кабинет
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in ViewBag.Lessons)
+        {
+            <tr>
+                <td>
+                    @item.LessonName
+                </td>
+                <td>
+                    @item.Teacher
+                </td>
+                <td>
+                    @item.LessonRoom
+                </td>
+                <td>
+                    
+                    @Html.ActionLink("Delete", "DeleteLesson", new { id = item.LessonsId })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</body>

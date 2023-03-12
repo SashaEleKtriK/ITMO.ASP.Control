@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="contain">
+    <h2>Добро пожаловать</h2>
+    <p> Расписание занятий </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                Класс
+            </th>
+            @foreach (var day in ViewBag.WeekDay)
+            {
+                <th>
+                    @day.Name
+                </th>
+            }
+
+        </tr>
+
+        @foreach (var item in ViewBag.Classes)
+        {
+            <tr>
+                <td>
+                    @item
+                </td>
+
+
+                @foreach (var day in ViewBag.WeekDay)
+                {
+                    <td>
+                        <table>
+                            @foreach (var lesday in ViewBag.Table)
+                            {
+
+
+                                if (lesday.Class == item && lesday.WeekDay == day.Name)
+                                {
+                                    <tr>
+                                        <td>
+                                            @lesday.FirstLesson
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @lesday.SecondLesson
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @lesday.ThirdLesson
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @lesday.FourthLesson
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @lesday.FifthLesson
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @lesday.SixLesson
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            }
+
+                        </table>
+                    </td>
+                }
+
+
+
+
+
+            </tr>
+        }
+
+    </table>
+</div>

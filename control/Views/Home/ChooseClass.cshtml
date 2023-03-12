@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "ChooseClass";
+}
+
+    <h2>ChooseClass</h2>
+
+    @foreach (var studclass in ViewBag.Classes)
+    {
+        <p>
+            @Html.ActionLink($"{studclass.Name}", "ChooseLesson", new { id = studclass.ClassLogId });
+
+        </p>
+    }
+
+
+

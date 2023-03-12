@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "ChooseStud";
+}
+
+<h2>ChooseStud</h2>
+@using (Html.BeginForm("ChooseStud", "Home", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                <select name="Student">
+
+                    @foreach (var s in ViewBag.stud)
+                    {
+
+                        control.Models.Users stud = new control.Models.Users();
+                        stud = s;
+
+                        <option>
+                            @stud.LastName @stud.FirstName
+                        </option>
+                    }
+
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select name="Class">
+                    <option>@ViewBag.Class.ClassLogId</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Отправить" />
+            </td>
+        </tr>
+    </table>
+    <table class="table">
+        <tr>
+            <th>
+                @ViewBag.CurStud 
+            </th>
+            <th>Оценки</th>
+            <th>Средний балл</th>
+        </tr>
+        @{ 
+            List<double> allMid = new List<double>();
+        }
+        @foreach (string les in ViewBag.Lessons)
+        {
+            double midMark;
+            <tr>
+                <td>
+                    @les
+                </td>
+                <td>
+                    <ul class="marks">
+                        @{
+                            int i = 0;
+                            double sum = 0.0;} 
+                        @foreach(var mark in ViewBag.Marks)
+                        {
+                            if(mark.Lesson == les)
+                            {
+                                        
+                                <li>@mark.Mark</li>
+                                if (!(mark.Mark == "N"))
+                                {
+                                    i++;
+                                    sum += Double.Parse(mark.Mark);
+                                }
+                            }
+
+                        }
+                    </ul>
+                </td>
+                <td>
+                    @{
+                        midMark = sum / i;
+                        allMid.Add(midMark);
+
+                     }
+                    @midMark
+                    
+                </td>
+            </tr>
+            
+                    
+        }
+        <tr>
+            <td>Средний балл за все предметы</td>
+            <td></td>
+            <td>
+                @{ 
+                    double summ = 0;
+                    int k = 0;
+                    foreach (double midMark in allMid)
+                    {
+                        summ += midMark;
+                        k++;
+                    }
+                    double result = summ / k;
+
+                }
+                @result
+            </td>
+        </tr>
+    </table>
+                
+}
+
+    

@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "ChooseLesson";
+}
+
+<body>
+    <h2>Выберите предмет @ViewBag.Class.Name</h2>
+    @using (Html.BeginForm("SetMark", "Home", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>
+                    <select name="lesson">
+                        @foreach (var les in ViewBag.Lessons)
+                        {
+                            <option id="">
+                                @les.LessonName @les.Teacher
+                            </option>
+                        }
+
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="chosenClass">
+                        <option>@ViewBag.Class.ClassLogId</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Отправить" />
+                </td>
+            </tr>
+        </table>
+        
+        
+        
+    }
+    
+</body>
+
+

@@ -1,0 +1,157 @@
+﻿
+@{
+    ViewBag.Title = "CreateLessonTable";
+}
+
+<h2>CreateLessonTable</h2>
+
+<body>
+    <form method="post" action="">
+        <table>
+            <tr>
+                <td><p>Выберите класс:</p></td>
+                <td>
+                    <select name="Class">
+                        @foreach (var item in ViewBag.Classes)
+                        {
+                            <option>@item</option>
+
+
+                        }
+
+                    </select>
+                </td>
+            </tr>
+            @{
+                List<string> LessonName = new List<string>();
+                LessonName.Add("FirstLesson");
+                LessonName.Add("SecondLesson");
+                LessonName.Add("ThirdLesson");
+                LessonName.Add("FourthLesson");
+                LessonName.Add("FifthLesson");
+                LessonName.Add("SixLesson");
+            }
+            @for (int i = 1; i <= 6; i++)
+            {
+                <tr>
+                    <td><p>Выберите урок № @i.ToString():</p></td>
+                    <td>
+
+                        <select name="@LessonName[i-1]">
+                             <option>нет урока</option>
+                            @foreach (var item in ViewBag.Lessons)
+                            {
+                                <option>@item.LessonsId, @item.LessonName @item.Teacher каб.@item.LessonRoom</option>
+
+
+                            }
+
+                        </select>
+                    </td>
+
+                </tr>
+
+            }
+            
+            <tr>
+                <td><p>День недели:</p></td>
+                <td><select name="WeekDay">
+                    @foreach (var day in ViewBag.WeekDay)
+                    { 
+                        <option>@day.Name</option>
+                    }
+                    </select></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Отправить" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+
+    <div>
+        @Html.ActionLink("На главную", "Index")
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                Класс
+            </th>
+            @foreach (var day in ViewBag.WeekDay)
+            {
+                <th>
+                    @day.Name
+                </th>
+            }
+            
+        </tr>
+
+        @foreach (var item in ViewBag.Classes)
+        {
+            <tr>
+                <td>
+                    @item
+                </td>
+                
+                    
+                    @foreach (var day in ViewBag.WeekDay)
+                    {
+                        <td>
+                            <table>
+                                @foreach (var lesday in ViewBag.Table)
+                                {
+
+
+                                    if (lesday.Class == item && lesday.WeekDay == day.Name)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @lesday.FirstLesson
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                @lesday.SecondLesson
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                @lesday.ThirdLesson
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                @lesday.FourthLesson
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                @lesday.FifthLesson
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                @lesday.SixLesson
+                                            </td>
+                                        </tr>
+                                    }
+
+
+                                }
+
+                            </table>
+                        </td>
+                    }
+
+                    
+                    
+                
+                
+            </tr>
+        }
+
+    </table>
+
+</body>

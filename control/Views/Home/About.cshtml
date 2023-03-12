@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "About";
+}
+
+<h2>Дневник</h2>
+@foreach (var studclass in ViewBag.Classes)
+{
+    <p>
+        @Html.ActionLink($"{studclass.Name}", "ChooseStud", new { Class = studclass.ClassLogId });
+
+    </p>
+}
+
+

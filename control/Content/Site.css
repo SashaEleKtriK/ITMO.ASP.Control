@@ -1,0 +1,58 @@
+﻿body {
+    margin: 0px;
+}
+.navbar li {
+    display: inline;
+    font-size: 18px;
+    padding-right: 15px;
+    margin-left: 15px;
+    border-right: 2px solid aqua;
+    
+}
+.navbar li a {
+    text-decoration: none;
+    color: aqua;
+        
+}
+div .navbar {
+    padding: 30px;
+    background-color: black;
+    margin: 0px;
+}
+.navbar li :hover{
+    color: white;
+}
+.container {
+    padding:30px;
+    background-color:darkgray;
+}
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #dddddd;
+    border-collapse: collapse;
+}
+
+.table th {
+    font-weight: bold;
+    padding: 5px;
+    background: #efefef;
+    border: 1px solid #dddddd;
+}
+
+.table td {
+    border: 1px solid #dddddd;
+    padding: 5px;
+}
+.marks li {
+    display: inline;
+    font-size: 18px;
+    padding-right: 5px;
+    margin-left: 15px;
+    border-right: 2px;
+}
+
+.marks li a {
+    text-decoration: none;
+    color: red;
+}

@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+}
+
+<h2>Error</h2>
+
+<p>Данные введены неверно.</p>
+<div>
+    <p>Ошибка: @ViewBag.Error</p>
+    @Html.ActionLink("На главную", "Index")
+</div>
